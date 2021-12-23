@@ -1,6 +1,5 @@
 package me.paranid5.android
 
-import me.paranid5.common.App
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
