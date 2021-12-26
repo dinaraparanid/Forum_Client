@@ -8,13 +8,11 @@ import androidx.compose.ui.window.singleWindowApplication
 import me.paranid5.desktop.me.paranid5.desktop.ui.App
 import me.paranid5.resources.Strings
 
-fun main() {
-    singleWindowApplication(
-        title = Strings.appName,
-        state = WindowState(
-            position = WindowPosition.Aligned(Alignment.Center),
-            width = 1000.dp,
-            height = 800.dp
-        )
-    ) { App() }
-}
+fun main() = singleWindowApplication(
+    title = Strings.appName,
+    state = WindowState(
+        position = WindowPosition.Aligned(Alignment.Center),
+        width = 1000.dp,
+        height = 800.dp
+    )
+) { App() }

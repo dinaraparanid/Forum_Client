@@ -12,11 +12,12 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import me.paranid5.desktop.me.paranid5.desktop.ui.main_window.RootScreen
 import me.paranid5.resources.Colors
 import me.paranid5.resources.Strings
 
 @Composable
-fun ColumnScope.AboutApp() {
+fun ColumnScope.AboutApp(rootScreen: RootScreen) {
     Box(
         Modifier
             .wrapContentWidth()
@@ -24,9 +25,7 @@ fun ColumnScope.AboutApp() {
             .align(Alignment.CenterHorizontally)
     ) {
         Button(
-            onClick = {
-                // TODO: About app screen
-            },
+            onClick = rootScreen::changeConfigToAboutApp,
             modifier = Modifier.align(Alignment.Center),
             elevation = null,
             shape = AbsoluteRoundedCornerShape(15.dp)

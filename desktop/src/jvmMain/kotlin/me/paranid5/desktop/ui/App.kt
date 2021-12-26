@@ -7,7 +7,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.arkivanov.decompose.DefaultComponentContext
+import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import me.paranid5.desktop.me.paranid5.desktop.ui.main_window.MainScreen
+import me.paranid5.desktop.me.paranid5.desktop.ui.main_window.RootScreen
 import me.paranid5.resources.Colors
 
 @Preview
@@ -18,7 +21,10 @@ fun App() = MaterialTheme(colors = darkColors(primary = Colors.primaryColor)) {
             .fillMaxSize()
             .background(Colors.backgroundColor)
     ) {
-        AppBar()
-        MainScreen()
+        val lifecycle = LifecycleRegistry()
+        val rootScreen = RootScreen(DefaultComponentContext(lifecycle)).apply { start() }
+
+        AppBar(rootScreen)
+        MainScreen(rootScreen)
     }
 }

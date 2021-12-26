@@ -10,14 +10,12 @@ import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import me.paranid5.resources.Colors
 
 @Composable
-fun MainScreen() = Surface(
+fun MainScreen(rootScreen: RootScreen) = Surface(
     color = Colors.backgroundColor,
     elevation = 10.dp,
     modifier = Modifier.fillMaxSize()
 ) {
-    val lifecycle = LifecycleRegistry()
-    val rootScreen = initialScreen
-    RootView(RootScreen(DefaultComponentContext(lifecycle)))
+    RootView(rootScreen)
 }
 
 // TODO: Change initial screen in settings

@@ -19,7 +19,7 @@ object Strings {
     lateinit var aboutApp: String
         private set
 
-    lateinit var homeButton: String
+    lateinit var userAvatar: String
         private set
 
     init {
@@ -37,7 +37,7 @@ object Strings {
         blog = "Blog"
         settings = "Settings"
         aboutApp = "About App"
-        homeButton = "Home button"
+        userAvatar = "User`s avatar"
     }
 
     fun switchToRussian() {
@@ -47,6 +47,6 @@ object Strings {
         blog = "Блог"
         settings = "Настройки"
         aboutApp = "О Приложении"
-        homeButton = "Кнопка \"Домой\""
+        userAvatar = "Аватар пользователя"
     }
 }
