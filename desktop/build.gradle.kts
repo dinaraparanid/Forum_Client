@@ -3,7 +3,7 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     kotlin("multiplatform")
-    id("org.jetbrains.compose") version "1.0.0-alpha3"
+    id("org.jetbrains.compose") version "1.0.1"
 }
 
 group = "me.paranid5"
@@ -21,6 +21,8 @@ kotlin {
             dependencies {
                 implementation(project(":common"))
                 implementation(compose.desktop.currentOs)
+                implementation("com.arkivanov.decompose:decompose:0.4.0")
+                implementation("com.arkivanov.decompose:extensions-compose-jetbrains:0.4.0")
                 api(compose.preview)
             }
         }

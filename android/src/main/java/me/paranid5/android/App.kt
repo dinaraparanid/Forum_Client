@@ -17,7 +17,6 @@ fun App() {
                 .fillMaxSize()
                 .background(Color(30, 30, 30))
         ) {
-
         }
     }
 }
