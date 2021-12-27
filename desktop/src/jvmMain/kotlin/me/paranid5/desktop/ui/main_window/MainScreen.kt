@@ -5,8 +5,6 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.arkivanov.decompose.DefaultComponentContext
-import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import me.paranid5.resources.Colors
 
 @Composable
@@ -15,9 +13,8 @@ fun MainScreen(rootScreen: RootScreen) = Surface(
     elevation = 10.dp,
     modifier = Modifier.fillMaxSize()
 ) {
-    RootView(rootScreen)
+    RootView(
+        rootScreen = rootScreen,
+        container = rootScreen.container
+    )
 }
-
-// TODO: Change initial screen in settings
-private inline val initialScreen
-    get() = RootElement.Screen.AccountScreen

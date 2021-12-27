@@ -22,6 +22,21 @@ object Strings {
     lateinit var userAvatar: String
         private set
 
+    lateinit var language: String
+        private set
+
+    lateinit var theme: String
+        private set
+
+    lateinit var font: String
+        private set
+
+    lateinit var projectPreviewImage: String
+        private set
+
+    const val russian = "Русский"
+    const val english = "English"
+
     init {
         when (System.getProperty("user.language")) {
             "en" -> switchToEnglish()
@@ -38,6 +53,10 @@ object Strings {
         settings = "Settings"
         aboutApp = "About App"
         userAvatar = "User`s avatar"
+        language = "Language"
+        theme = "Theme"
+        projectPreviewImage = "Project's preview image"
+        font = "Font"
     }
 
     fun switchToRussian() {
@@ -48,5 +67,9 @@ object Strings {
         settings = "Настройки"
         aboutApp = "О Приложении"
         userAvatar = "Аватар пользователя"
+        language = "Язык"
+        theme = "Тема"
+        projectPreviewImage = "Превью проекта"
+        font = "Шрифт"
     }
 }

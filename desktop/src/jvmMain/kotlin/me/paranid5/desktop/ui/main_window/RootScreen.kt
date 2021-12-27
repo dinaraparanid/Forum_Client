@@ -9,14 +9,16 @@ import com.arkivanov.decompose.router.*
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.parcelable.Parcelable
 import com.arkivanov.essenty.parcelable.Parcelize
+import me.paranid5.common.Project
+import me.paranid5.common.User
 
-class RootScreen(
-    componentContext: ComponentContext
-) : RootElement, ComponentContext by componentContext {
-    override val routerState: Value<RouterState<*, RootElement.Screen>>
+class RootScreen(componentContext: ComponentContext) : ScreenElement, ComponentContext by componentContext {
+    override val routerState: Value<RouterState<*, ScreenElement.Screen>>
         get() = router.state
 
     private lateinit var currentConfig: MutableState<Config>
+    lateinit var container: MutableState<Any?>
+        private set
 
     private val router by lazy {
         router(
@@ -41,26 +43,32 @@ class RootScreen(
 
         @Parcelize
         object AboutApp: Config
+
+        @Parcelize
+        object Project: Config
     }
 
     private inline val initialConfig
         get() = Config.Account // TODO: Change initial screen
 
-    private fun getChild(config: Config): RootElement.Screen = when (config) {
-        Config.AboutApp -> RootElement.Screen.AboutAppScreen
-        Config.Account -> RootElement.Screen.AccountScreen
-        Config.Blog -> RootElement.Screen.BlogScreen
-        Config.Projects -> RootElement.Screen.ProjectsScreen
-        Config.Settings -> RootElement.Screen.SettingsScreen
+    private fun getChild(config: Config): ScreenElement.Screen = when (config) {
+        Config.AboutApp -> ScreenElement.Screen.MainMenuScreen.AboutAppScreen
+        Config.Account -> ScreenElement.Screen.MainMenuScreen.AccountScreen
+        Config.Blog -> ScreenElement.Screen.MainMenuScreen.BlogScreen
+        Config.Projects -> ScreenElement.Screen.MainMenuScreen.ProjectsScreen
+        Config.Settings -> ScreenElement.Screen.MainMenuScreen.SettingsScreen
+        Config.Project -> ScreenElement.Screen.ProjectScreen
     }
 
-    fun changeConfigToAccount() {
+    fun changeConfigToAccount(user: User) {
         currentConfig.value = Config.Account
+        container.value = user
         router.replaceCurrent(currentConfig.value)
     }
 
-    fun changeConfigToProjects() {
+    fun changeConfigToProjects(projects: List<Project>) {
         currentConfig.value = Config.Projects
+        container.value = projects
         router.replaceCurrent(currentConfig.value)
     }
 
@@ -79,8 +87,15 @@ class RootScreen(
         router.replaceCurrent(currentConfig.value)
     }
 
+    fun changeConfigToProject(project: Project) {
+        currentConfig.value = Config.Project
+        container.value = project
+        router.replaceCurrent(currentConfig.value)
+    }
+
     @Composable
     fun start() {
+        container = remember { mutableStateOf(User("Fuckin' Slave", "bebra@gmail.com")) }
         currentConfig = remember { mutableStateOf(initialConfig) }
     }
 }

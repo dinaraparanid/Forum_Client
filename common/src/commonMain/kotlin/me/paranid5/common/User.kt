@@ -1,15 +1,15 @@
 package me.paranid5.common
 
 import androidx.compose.runtime.Composable
-import java.awt.Image
+import androidx.compose.ui.graphics.painter.Painter
 
 data class User(
     val nickname: String,
     val email: String
 ) {
-    private var _avatar: Image? = null
+    private var _avatar: Painter? = null
 
-    val avatar: Image
+    val avatar: Painter
         @Composable
         get() {
             if (_avatar == null)
@@ -37,4 +37,4 @@ data class User(
 }
 
 @Composable
-expect fun User.loadAvatar(): Image
+expect fun User.loadAvatar(): Painter
